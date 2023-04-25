@@ -7,3 +7,10 @@ api.add_resource(
     methods = ["GET","POST"],
     endpoint="projects", 
 )
+
+api.add_resource(
+    ProjectResource,
+    "/projects/<project_id>",
+    methods = ["DELETE","GET","PATCH"],
+    endpoint="project", 
+)
