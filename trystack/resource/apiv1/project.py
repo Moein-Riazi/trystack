@@ -3,7 +3,7 @@ from trystack.controller.apiv1 import ProjectController
 
 class ProjectResource(Resource):
     def get(self, project_id = None):
-        if project_id is not None:
+        if project_id is None:
             return ProjectController.get_projects()
         else:
             return ProjectController.get_project(project_id)
