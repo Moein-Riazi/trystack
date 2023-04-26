@@ -1,4 +1,5 @@
 from trystack.util import jsonify
+from trystack.model import project
 
 class ProjectController:
     def get_projects():
