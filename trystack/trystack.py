@@ -2,11 +2,13 @@ from flask import Flask,Blueprint
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_marshmallow import Marshmallow
 
 from .config import Config
 
 db = SQLAlchemy()
 mg = Migrate()
+ma = Marshmallow()
 
 
 
@@ -22,4 +24,5 @@ def create_app():
     app.register_blueprint(apiv1_bp)
     db.init_app(app)
     mg.init_app(app, db)
+    ma.init_app(app)
     return app

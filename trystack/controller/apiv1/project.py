@@ -1,21 +1,27 @@
 from trystack.util import jsonify
-from trystack.model import project
+from trystack.model import Project
 from flask import request
+from trystack.decorator import json_required
+from trystack.schema.apiv1 import ProjectSchema
 
 class ProjectController:
+    @json_required
     def get_projects():
-        print(request.content_type)
-        #if request.content_type != "application/json":
-        #    return jsonify(status=415)
+        projects = Project.query.all()
+        projects_schema = ProjectSchema(many=True)
+        return jsonify(
+            {"Projects": projects_schema.dump(projects)}
+        )
 
+    @json_required
     def get_project(project_id):
         return jsonify(status=501)
-
+    @json_required
     def create_project():
         return jsonify(status=501)
-
+    @json_required
     def update_project(project_id):
         return jsonify(status=501)
-
+    @json_required
     def delete_project(project_id):
         return jsonify(status=501)
